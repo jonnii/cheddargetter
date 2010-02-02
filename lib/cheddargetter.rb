@@ -85,6 +85,16 @@ class CheddarGetter
     normalize(response, 'customers', 'customer')
   end
   
+  def increment_item(item_code, customer_code)
+    response = post("/customers/add-item-quantity/productCode/#{@product_code}/code/#{customer_code}/itemCode/#{item_code}")
+    normalize(response, 'customers', 'customer')
+  end
+
+  def delete_customer(customer_code)
+    response = post("/customers/delete/productCode/#{@product_code}/code/#{customer_code}")
+    normalize(response, 'customers', 'customer')
+  end
+
   private
   
   def get(path)
